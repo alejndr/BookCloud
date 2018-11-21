@@ -1,0 +1,30 @@
+
+body{
+margin: 0 auto;      
+}
+
+.login{
+position:absolute;
+left: 40%;
+top: 25%;
+width: 300px;
+height: 210px;
+text-align: center;
+}
+
+.titulo{
+position: absolute;
+left: 40%;
+font-size: 4em;
+font-weight: bold;
+}
+
+.alert{
+position: absolute;
+margin: 5%;
+
+}
+
+.btn{
+    display: inline-block;
+}

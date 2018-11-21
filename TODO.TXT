@@ -1,0 +1,27 @@
+
+
+Detalle libro
+    ///Puntuacion media?
+    ///criticas
+    Usuarios tipo 1(moderador): borrar criticas
+    /// Cambiar estado del boton leido cuando ya este en la lista del usuario
+
+
+Detalle Usuarios
+    Usuarios tipo 1(admin) y 2(moderador): ban usuarios
+
+
+Mensajes de error en index.html
+    Desaparecer cuando actualiza la pagina?
+
+
+Mejorar poblarBD
+    Mejorar aspecto del resultado
+    varios autores (Modifica tambien perfilLibro)
+    varios generos (Modifica tambien perfilLibro)
+    Selector de consultas disponibles (Fiction, Dune, Mundodisco)
+    Busqueda??
+
+
+Aspecto general - CSS
+
