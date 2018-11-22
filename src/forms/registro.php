@@ -11,7 +11,7 @@ $email = $_POST["email"]??"" ;
 // TODO $imagen = $_POST["imagen"]??"" ;
 
 //Conexión a la BD
-$mysqli = new mysqli("localhost","root","")	or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
+$mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud")	or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
 $mysqli->select_db("bookcloud") ;
 $mysqli->set_charset("utf8") ;
 
@@ -35,7 +35,7 @@ if (isset($_POST["flag"]) && ($_POST["flag"])){
       $mysqli->query($sql);
 
 
-      header("location:http://localhost/php/BookCloud/?exitoRegistro") ;
+      header("location:../../index.php?exitoRegistro") ;
 
     }else{
       $err = "Se ha producido un error en el registro." ;

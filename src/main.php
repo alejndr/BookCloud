@@ -6,10 +6,12 @@ require_once "./Usuario.php" ;
 
 $sesion = Sesion::iniciarSesion() ;
 
+
+
 // comprobamos que haya una sesion activa, si no redirigimos a index
 if (!$sesion->checkActiveSession()) {
 
-  header("location:http://localhost/php/BookCloud/?SesionCaducada") ;
+  header("location:../index.php?SesionCaducada") ;
 
 }
 
@@ -19,7 +21,7 @@ if (!$sesion->checkActiveSession()) {
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
   
   $sesion->close();
-  header("location:http://localhost/php/BookCloud") ;
+  header("location:../index.php") ;
 
 }
 
@@ -83,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
 
       <!-- El bucle crea tantas cards como entradas encuentre -->
       <?php
-      $mysqli = new mysqli("localhost","root","") ;
+      $mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud") or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
       $mysqli->select_db("bookcloud") ;
 
       $res = $mysqli->query("SELECT * FROM libro ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;

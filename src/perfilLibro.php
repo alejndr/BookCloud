@@ -9,7 +9,7 @@ $sesion = Sesion::iniciarSesion() ;
 // comprobamos que haya una sesion activa, si no redirigimos a index
 if (!$sesion->checkActiveSession()) {
 
-  header("location:http://localhost/php/BookCloud/?SesionCaducada") ;
+  header("location:../index.php?SesionCaducada") ;
   
 }
 
@@ -17,7 +17,7 @@ if (!$sesion->checkActiveSession()) {
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
   
   $sesion->close();
-  header("location:http://localhost/php/BookCloud") ;
+  header("location:../index.php") ;
   
 }
 

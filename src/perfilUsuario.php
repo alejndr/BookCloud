@@ -9,7 +9,7 @@ $sesion = Sesion::iniciarSesion() ;
 // comprobamos que haya una sesion activa, si no redirigimos a index
 if (!$sesion->checkActiveSession()) {
 
-  header("location:http://localhost/php/BookCloud/?SesionCaducada") ;
+  header("location:../index.php?SesionCaducada") ;
   
 }
 
@@ -17,7 +17,7 @@ if (!$sesion->checkActiveSession()) {
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
   
   $sesion->close();
-  header("location:http://localhost/php/BookCloud") ;
+  header("location:../index.php") ;
   
 }
 //print_r($idUsuario);
@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
   </head>
   <body>
 
@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
           <li class="nav-item active">
           <form method="post">
             <a class="btn btn-primary" href="../" role="button">Volver</a>
-            <a class="btn btn-info" href="#" role="button">Perfil</a>
+            
             <button type="submit" name="logout" class="btn btn-danger">Logout</button>
           </form>
           </li>
@@ -122,12 +122,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                                     <!--Pestaña lista-->
                                     <div class="tab-pane fade" id="Lista" role="tabpanel" aria-labelledby="Lista-tab">
                                     <?php
-                                    $mysqli = new mysqli("localhost","root","") ;
+                                    $mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud")	or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
                                     $mysqli->select_db("bookcloud") ;
                                     $idUsuario = $_SESSION["idUsuario"];
 
                                     $res = $mysqli->query("SELECT lista.idLista, libro.idLibro, libro.titulo FROM lista 
-                                                            INNER JOIN lista_libro on lista.idLista = lista.idLista
+                                                            INNER JOIN lista_libro on lista.idLista = lista_libro.idLista
                                                             INNER JOIN libro on libro.idLibro = lista_libro.idLibro
                                                             WHERE idUsuario='$idUsuario' and lista.tipo=1  ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;
 

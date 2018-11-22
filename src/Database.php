@@ -4,10 +4,10 @@
 class Database {
 
     //datos de acceso a la BBDD
-    private $dbHost = "localhost" ;
-    private $dbUser = "root" ;
-    private $dbPass = "" ;
-    private $dbName = "bookcloud" ;
+    private $dbHost = "sql204.epizy.com" ;
+    private $dbUser = "epiz_23035390" ;
+    private $dbPass = "Iuzm6TjYz84L2L" ;
+    private $dbName = "epiz_23035390_bookcloud" ;
 
 
     private static $resultado ;

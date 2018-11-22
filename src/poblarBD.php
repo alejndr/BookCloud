@@ -4,7 +4,7 @@
 const KEY = "&key=AIzaSyBI3Dd0Jeat2oKv31iANc7IqmDBtWxZspI";
 
 // Conexion a la BBDD
-$mysqli = new mysqli("localhost","root","") or die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
+$mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud") or die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
 $mysqli->select_db("bookcloud") ;
 
 // Consulta a la API de google books por genero: ficcion, restringido a libros en español y
