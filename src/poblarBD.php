@@ -1,7 +1,8 @@
 <?php
 
 // Google books API key 
-const KEY = "&key=AIzaSyBI3Dd0Jeat2oKv31iANc7IqmDBtWxZspI";
+// Quitado por seguridad
+const KEY = "";
 
 // Conexion a la BBDD
 $mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud") or die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
