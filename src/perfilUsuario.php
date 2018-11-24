@@ -5,6 +5,7 @@ require_once "./Sesion.php" ;
 
 
 $sesion = Sesion::iniciarSesion() ;
+$db = Database::getInstancia() ;
 
 // comprobamos que haya una sesion activa, si no redirigimos a index
 if (!$sesion->checkActiveSession()) {
@@ -122,16 +123,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                                     <!--Pestaña lista-->
                                     <div class="tab-pane fade" id="Lista" role="tabpanel" aria-labelledby="Lista-tab">
                                     <?php
-                                    $mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud")	or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
-                                    $mysqli->select_db("bookcloud") ;
+                                    //$mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud")	or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
+                                    //$mysqli->select_db("bookcloud") ;
                                     $idUsuario = $_SESSION["idUsuario"];
+                                         
+                                     $db->consulta("SELECT lista.idLista, libro.idLibro, libro.titulo FROM lista 
+                                                    INNER JOIN lista_libro on lista.idLista = lista_libro.idLista
+                                                    INNER JOIN libro on libro.idLibro = lista_libro.idLibro
+                                                    WHERE idUsuario='$idUsuario' and lista.tipo=1  ;");
 
-                                    $res = $mysqli->query("SELECT lista.idLista, libro.idLibro, libro.titulo FROM lista 
+                                    /*$res = $mysqli->query("SELECT lista.idLista, libro.idLibro, libro.titulo FROM lista 
                                                             INNER JOIN lista_libro on lista.idLista = lista_libro.idLista
                                                             INNER JOIN libro on libro.idLibro = lista_libro.idLibro
-                                                            WHERE idUsuario='$idUsuario' and lista.tipo=1  ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;
+                                                            WHERE idUsuario='$idUsuario' and lista.tipo=1  ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;*/
 
-                                    while ($row=$res->fetch_object()) {
+                                    while ($row = $db->getObjeto()) {
                                         
                                     ?>
                                         <div class="row">

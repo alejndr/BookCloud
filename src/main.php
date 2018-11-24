@@ -5,7 +5,7 @@ require_once "./Sesion.php" ;
 require_once "./Usuario.php" ;
 
 $sesion = Sesion::iniciarSesion() ;
-
+$db = Database::getInstancia() ;
 
 
 // comprobamos que haya una sesion activa, si no redirigimos a index
@@ -85,12 +85,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
 
       <!-- El bucle crea tantas cards como entradas encuentre -->
       <?php
-      $mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud") or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
-      $mysqli->select_db("bookcloud") ;
+      //$mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud") or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
+      //$mysqli->select_db("bookcloud") ;
 
-      $res = $mysqli->query("SELECT * FROM libro ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;
-
-      while ($row=$res->fetch_object()) {
+      //$res = $mysqli->query("SELECT * FROM libro ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;
+		
+      $db->consulta("SELECT * FROM libro ;");
+        
+      while ($row = $db->getObjeto()) {
         
       ?>
         <div class="col-lg-4 col-sm-6 portfolio-item" style=" height: 482px ">
@@ -112,30 +114,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
       <!-- /.row -->
       
 
-      <!-- Paginación -->
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
+      <!--TODO: Paginación -->
+      
 
     </div>
     <!-- /.container -->

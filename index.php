@@ -18,7 +18,7 @@
 
 		// Comprobamos si hemos accedido a nuestra cuenta
 		if (!$log){
-      header("location:http://localhost/php/BookCloud?FalloLogin") ;
+      header("location:index.php?FalloLogin") ;
     } 
   }
 
