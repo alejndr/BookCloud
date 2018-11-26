@@ -78,6 +78,29 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                                 
                             </div>
                         </div>
+                      
+                      	<!-- Mensajes de exito y error -->
+                        <?php
+                            if (isset($_GET["ActualIncorrecta"])){
+                                echo "<div style=\"margin: 0 auto; width: 300px; text-align: center;\" class=\"alert alert-danger\" role=\"alert\">
+                                La contraseña que a introducido no coincide con la actual.</div>" ;
+                            }
+
+                            if (isset($_GET["RepetidaIncorrecta"])){
+                                echo "<div style=\"margin: 0 auto; width: 300px; text-align: center\" class=\"alert alert-danger\" role=\"alert\">
+                                Las nuevas contraseñas introducidas no coinciden.</div>" ;
+                            }
+
+                            if (isset($_GET["ExitoPass"])){
+                                echo "<div style=\"margin: 0 auto; width: 300px; text-align: center;\" class=\"alert alert-success\" role=\"alert\">
+                                Contraseña cambiada con exito.</div>" ;
+                            }
+
+                            if (isset($_GET["ExitoQL"])){
+                                echo "<div style=\"margin: 0 auto; width: 300px; text-align: center\" class=\"alert alert-success\" role=\"alert\">
+                                Libro quitado.</div>" ;
+                            }
+                        ?>
 
                         <div class="row">
                             <div class="col-12">
@@ -154,7 +177,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                                     </div>
 
                                     <div class="tab-pane fade" id="Editar" role="tabpanel" aria-labelledby="Editar-tab">
-                                        Editar
+                                        <div class="row">
+                                        <div class="col-sm-3 col-md-2 col-5">
+                                            <label style="font-weight:bold;">Cambiar contraseña</label>
+                                            <br>
+                                        </div>
+                                        <div class="col-md-8 col-6">
+                                            <form action="./cambiarPass.php" method="post">
+                                            <label for="PassActual">Contraseña actual:&nbsp; </label>
+                                            <input type="password" name="PassActual" required ><br>
+                                            <label for="NuevaPass">Nueva contraseña:&nbsp; </label>
+                                            <input type="password" name="NuevaPass" ><br>
+                                            <label for="NuevaPass">Repite la nueva contraseña:&nbsp; </label>
+                                            <input type="password" name="NuevaPassRepetida" ><br>
+                                            <button type="submit"  class="btn btn-danger">Cambiar contraseña</button>
+                                            </form>
+                                        
+                                        </div>
+                                    </div>
+                                    <hr />
                                     </div>
                                 </div>
                             </div>
@@ -174,5 +215,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script>
+    $('#myTab a').click(function(e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+      var id = $(e.target).attr("href").substr(1);
+      window.location.hash = id;
+    });
+
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+    $('#myTab a[href="' + hash + '"]').tab('show');
+  </script>
   </body>
 </html>
