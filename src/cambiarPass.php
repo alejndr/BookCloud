@@ -36,6 +36,7 @@ $passActual = $res->contrasena ;
 // Comparamos la contraseña introducida por el usuario con la real
 if ($passActual == $passIntroducida) {
 
+  // Comprobamos que las nuevas contraseñas introducidas por el usuario coincidan
   if ($NuevaPass == $NuevaPassRepetida) {
     $db->consulta("UPDATE usuario SET contrasena='$NuevaPass' WHERE idUsuario='$idUsuario'");
     header("location:perfilUsuario.php?ExitoPass");

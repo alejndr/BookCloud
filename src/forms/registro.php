@@ -23,6 +23,7 @@ if (isset($_POST["flag"]) && ($_POST["flag"])){
   $sql = "INSERT INTO usuario (nombre,apellido,usuario,contrasena,email) 
           VALUES ('$nombre','$apellido','$usuario','$pass','$email') ;" ;
 
+    // Cogemos la id del ultimo usuario introducido y le creamos listas de tipo 1(Quiero leer) y de tipo 2(Leido)
     if ($mysqli->query($sql)){
       $ultimoUsuario = $mysqli->insert_id ;
 

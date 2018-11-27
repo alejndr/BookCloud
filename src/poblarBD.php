@@ -1,7 +1,6 @@
 <?php
 
 // Google books API key 
-// Quitado por seguridad
 const KEY = "";
 
 // Conexion a la BBDD
@@ -11,10 +10,10 @@ $mysqli->select_db("bookcloud") ;
 // Consulta a la API de google books por genero: ficcion, restringido a libros en español y
 // maximo 30 resultados (por defecto da 10, maximo 40) 
 
-//Fiction
+// Fiction
 //$librosAPI = "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&langRestrict=es&maxResults=30".KEY;
 
-//Dune
+// Dune
 //$librosAPI = "https://www.googleapis.com/books/v1/volumes?q=intitle:dune&langRestrict=es".KEY;
 
 // Mundodisco

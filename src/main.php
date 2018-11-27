@@ -89,7 +89,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
       //$mysqli->select_db("bookcloud") ;
 
       //$res = $mysqli->query("SELECT * FROM libro ;") or die("**Error consulta libros: $mysqli->errno : $mysqli->error") ;
-		
+                  
+      // Extraemos todos los datos de la tabla libro para poblar el main
       $db->consulta("SELECT * FROM libro ;");
         
       while ($row = $db->getObjeto()) {
@@ -137,7 +138,3 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-
-<?php $mysqli->close(); ?>

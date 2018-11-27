@@ -79,7 +79,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                             </div>
                         </div>
                       
-                      	<!-- Mensajes de exito y error -->
+                      	<!-- Mensajes de exito y error para las operaciones de cambio de contraseña y de quitar libro-->
+                      	<!--  -->
                         <?php
                             if (isset($_GET["ActualIncorrecta"])){
                                 echo "<div style=\"margin: 0 auto; width: 300px; text-align: center;\" class=\"alert alert-danger\" role=\"alert\">
@@ -149,7 +150,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                                     //$mysqli = new mysqli("sql204.epizy.com","epiz_23035390","Iuzm6TjYz84L2L", "epiz_23035390_bookcloud")	or	die("**Error de conexión: $mysqli->connection_errno : $mysqli->connection_error") ;
                                     //$mysqli->select_db("bookcloud") ;
                                     $idUsuario = $_SESSION["idUsuario"];
-                                         
+
+
+                                    // Extraemos los datos de la lista tipo 1 (Quiero leer) del usuario actual     
                                      $db->consulta("SELECT lista.idLista, libro.idLibro, libro.titulo FROM lista 
                                                     INNER JOIN lista_libro on lista.idLista = lista_libro.idLista
                                                     INNER JOIN libro on libro.idLibro = lista_libro.idLibro

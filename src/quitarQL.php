@@ -16,7 +16,7 @@ $db = Database::getInstancia() ;
 $idLibro = $_GET["idLibro"];
 $idLista = $_GET["idLista"];
 
-
+// Quitamos la relación entre el libro y el id de la lista 
 $db->consulta("DELETE FROM lista_libro WHERE idLista='$idLista' AND idLibro='$idLibro'");
 
 header("location:./perfilUsuario.php");

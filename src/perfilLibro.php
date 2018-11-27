@@ -5,6 +5,7 @@ require_once "./Sesion.php" ;
 
 
 $sesion = Sesion::iniciarSesion() ;
+$db = Database::getInstancia() ;
 
 // comprobamos que haya una sesion activa, si no redirigimos a index
 if (!$sesion->checkActiveSession()) {
@@ -25,8 +26,6 @@ $idLibro = $_GET["idLibro"];
 
 //print_r($idLibro);
 
-
-$db = Database::getInstancia() ;
 
 $sql = "SELECT * 
         FROM libro 

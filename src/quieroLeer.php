@@ -20,10 +20,12 @@ $idUsuario = $_SESSION["idUsuario"];
 
 //$mysqli->query("INSERT INTO lista_libro(idLista, idLibro) VALUES ('$idLista','$idLibro')");
 
+// Sacamos la id de la lista del tipo 1(Quiero leer) del usuario actual
 $db->consulta("SELECT * from lista WHERE idUsuario='$idUsuario' AND tipo='1'");
 $res = $db->getObjeto();
 $idLista = $res->idLista ;
 
+// Relacionamos el id del libro con el id de la lista
 $db->consulta("INSERT INTO lista_libro(idLista, idLibro) VALUES ('$idLista','$idLibro')");
 
 
