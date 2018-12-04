@@ -1,11 +1,12 @@
 
+//// Pasar a objetos
 
 Detalle libro
-    ///Puntuacion media?
+    ///Puntuacion media
     ///criticas
     Usuarios tipo 1(moderador): borrar criticas
     /// Cambiar estado del boton leido cuando ya este en la lista del usuario
-
+    /// Controlar libro desconocido.
 
 Detalle Usuarios
     Usuarios tipo 1(admin) y 2(moderador): ban usuarios
